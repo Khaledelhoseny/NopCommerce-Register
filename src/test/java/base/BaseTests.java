@@ -6,11 +6,16 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import readFile.ReadDataFromJson;
+
+import java.io.FileNotFoundException;
 
 public class BaseTests {
 
     WebDriver driver ;
     protected HomePage homePage ;
+    //import jdk.internal.net.http.hpack.Huffman;
+    public ReadDataFromJson readDataFromJson  ;
     @BeforeClass
     public void setUp(){
         driver = new ChromeDriver();
@@ -18,14 +23,15 @@ public class BaseTests {
         homePage = new HomePage(driver) ;
     }
     @BeforeMethod
-    public void goHome(){
-        driver.get("https://demo.nopcommerce.com/");
+    public void goHome() throws FileNotFoundException {
+       readDataFromJson  = new ReadDataFromJson() ;
+        driver.get(readDataFromJson.readJsonData().URL);
     }
 
-    @AfterClass
-    public void tearDown(){
-        driver.quit();
-    }
+//    @AfterClass
+//    public void tearDown(){
+//        driver.quit();
+//    }
 
 
 }

@@ -1,0 +1,12 @@
+{
+  "URL":"https://demo.nopcommerce.com/",
+  "Gender":"Male",
+  "FirstName": "Khaled" ,
+  "LastName": "Elhoseny",
+  "Day":  19,
+  "Month" : "October",
+  "Year" : "2002",
+  "Email": "khaledelhoseny@gmail.com",
+  "CompanyName" : "VOIS",
+  "NewsLetter" : false
+}
