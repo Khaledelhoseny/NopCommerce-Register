@@ -10,7 +10,7 @@ import pages.HomePage;
 public class BaseTests {
 
     WebDriver driver ;
-    HomePage homePage ;
+    protected HomePage homePage ;
     @BeforeClass
     public void setUp(){
         driver = new ChromeDriver();
