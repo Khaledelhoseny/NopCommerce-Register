@@ -1,8 +1,10 @@
 package register;
 
 import base.BaseTests;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
+import pages.RegisterResultPage;
 import readFile.ReadDataFromJson;
 
 import java.io.FileNotFoundException;
@@ -22,6 +24,12 @@ public class RegisterTests extends BaseTests {
         registerPage.insertEmail(readDataFromJson.readJsonData().Email);
         registerPage.insertCompanyName(readDataFromJson.readJsonData().CompanyName);
         registerPage.clickOnCheckBox(readDataFromJson.readJsonData().NewsLetter);
+        registerPage.insertPassword(readDataFromJson.readJsonData().Password);
+        registerPage.insertConfirmPassword(readDataFromJson.readJsonData().ConfirmPassword);
+        RegisterResultPage registerResultPage = registerPage.clickOnRegister();
+        String actualResult =  registerResultPage.getRegistrationCompletedMessage();
+        String expectedResult = "Your registration completed" ;
+        Assert.assertEquals(actualResult , expectedResult );
     }
 
 }

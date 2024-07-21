@@ -24,6 +24,9 @@ public class RegisterPage extends MethodHandels {
     private final By email = By.id("Email");
     private final By companyName = By.id("Company");
     private final By checkBox =By.xpath("//input[@type='checkbox']") ;
+    private final By password = By.id("Password") ;
+    private final By confrimPassword = By.id("ConfirmPassword") ;
+    private final By registerButton = By.id("register-button") ;
 
     public void clickOnGenderOption (String gender) {
         if(Objects.equals(gender, "Male")){
@@ -62,10 +65,23 @@ public class RegisterPage extends MethodHandels {
 
     public void clickOnCheckBox(boolean newsLetter){
       boolean isSelected = webElement(checkBox).isSelected();
-      if(!isSelected == newsLetter){
+      if(isSelected == !newsLetter){
           click(checkBox);
       }
     }
+
+    public void insertPassword(String text){
+        sendKeys(password,text);
+    }
+    public void insertConfirmPassword(String text){
+        sendKeys(confrimPassword,text);
+    }
+
+    public RegisterResultPage clickOnRegister(){
+        click(registerButton);
+        return new RegisterResultPage(driver) ;
+    }
+
 
 
 }
